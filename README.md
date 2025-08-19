@@ -1,3 +1,3 @@
 # Example edits
 
-This is the example of change being commited
+This is the demo branch in which the change is made.
