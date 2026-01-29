@@ -1,8 +1,6 @@
 name: CSharp CI
 
-on:
-  push:
-  pull_request:
+on: [push]
 
 jobs:
   build:
@@ -17,11 +15,11 @@ jobs:
         with:
           dotnet-version: "8.0.x"
 
-      - name: Run unit checks
-        run: dotnet test Timesheet.Test --filter FullyQualifiedName~Timesheet.Test.Unit --logger trx --results-directory ./test-results
+      - name: Run unit checks (with TRX)
+        run: dotnet test Timesheet.Test/Timesheet.Test.csproj --filter FullyQualifiedName~Timesheet.Test.Unit --logger "trx" --results-directory "./test-results"
+
       - name: Publish Test Results
-      - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action/macos@v2
+        uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
           files: |
